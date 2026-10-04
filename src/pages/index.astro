@@ -1,11 +1,303 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+// Hämta alla publicerade blogginlägg
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() - a.data.date.getTime()
+  );
+
+// Hitta artikeln som ska ligga störst på startsidan
+const featuredPost =
+  posts.find((post) => post.data.featured) ?? posts[0];
+
+// Alla övriga artiklar
+const recentPosts = posts.filter(
+  (post) => post.id !== featuredPost?.id
+);
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Joel von Gustafsson"
+  description="Oberoende betraktelser om samhälle, media och vår samtid."
+>
+  <div class="home-layout">
+
+    <div class="main-column">
+
+      {
+        featuredPost && (
+          <article class="featured">
+
+            <div class="featured-meta">
+              <span>{featuredPost.data.category}</span>
+
+              <time datetime={featuredPost.data.date.toISOString()}>
+                {featuredPost.data.date.toLocaleDateString("sv-SE", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </time>
+            </div>
+
+            {
+              featuredPost.data.image && (
+                <a href={`/blogg/${featuredPost.id}/`}>
+                  <img
+                    class="featured-image"
+                    src={featuredPost.data.image}
+                    alt={featuredPost.data.imageAlt ?? ""}
+                  />
+                </a>
+              )
+            }
+
+            <h1>
+              <a href={`/blogg/${featuredPost.id}/`}>
+                {featuredPost.data.title}
+              </a>
+            </h1>
+
+            <p class="featured-description">
+              {featuredPost.data.description}
+            </p>
+
+            <a
+              class="read-article"
+              href={`/blogg/${featuredPost.id}/`}
+            >
+              Läs hela betraktelsen →
+            </a>
+
+          </article>
+        )
+      }
+
+
+      {
+        recentPosts.length > 0 && (
+          <section class="recent">
+
+            <div class="section-heading">
+              <span>Senaste betraktelser</span>
+            </div>
+
+            <div class="article-grid">
+              {
+                recentPosts.map((post) => (
+                  <ArticleCard post={post} />
+                ))
+              }
+            </div>
+
+          </section>
+        )
+      }
+
+    </div>
+
+
+    <Sidebar />
+
+  </div>
+</BaseLayout>
+
+
+<style>
+  .home-layout {
+    width: min(var(--content-width), calc(100% - 3rem));
+
+    margin: 3rem auto 5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 4rem;
+
+    align-items: start;
+  }
+
+
+  /* FEATURED ARTICLE */
+
+  .featured {
+    padding-bottom: 3rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .featured-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+  }
+
+  .featured-meta span {
+    color: var(--accent);
+
+    font-weight: bold;
+  }
+
+
+  .featured-image {
+    width: 100%;
+
+    aspect-ratio: 16 / 8;
+
+    object-fit: cover;
+
+    border: 1px solid var(--border);
+  }
+
+
+  .featured h1 {
+    max-width: 800px;
+
+    margin: 1.5rem 0 1rem;
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.035em;
+  }
+
+
+  .featured h1 a {
+    color: inherit;
+
+    text-decoration: none;
+  }
+
+
+  .featured h1 a:hover {
+    color: var(--accent);
+  }
+
+
+  .featured-description {
+    max-width: 700px;
+
+    margin: 0 0 1.5rem;
+
+    color: var(--text-muted);
+
+    font-size: 1.2rem;
+
+    line-height: 1.6;
+  }
+
+
+  .read-article {
+    color: var(--accent);
+
+    font-size: 0.8rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+  }
+
+
+  .read-article:hover {
+    text-decoration: underline;
+  }
+
+
+  /* RECENT POSTS */
+
+  .recent {
+    margin-top: 3rem;
+  }
+
+
+  .section-heading {
+    margin-bottom: 1.5rem;
+
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+
+    padding: 0.65rem 0;
+  }
+
+
+  .section-heading span {
+    font-size: 0.8rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+  }
+
+
+  .article-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 2rem;
+  }
+
+
+  /* TABLET */
+
+  @media (max-width: 900px) {
+
+    .home-layout {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+
+  /* MOBILE */
+
+  @media (max-width: 650px) {
+
+    .home-layout {
+      width: min(100% - 2rem, var(--content-width));
+
+      margin-top: 2rem;
+    }
+
+
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+
+
+    .featured h1 {
+      font-size: 2.4rem;
+    }
+
+
+    .featured-description {
+      font-size: 1.05rem;
+    }
+
+  }
+</style>

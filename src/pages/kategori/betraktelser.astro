@@ -1,0 +1,868 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Sidebar from "../../components/Sidebar.astro";
+
+const posts = (await getCollection("blog"))
+  .filter(
+    (post) =>
+      !post.data.draft &&
+      post.data.category === "Betraktelser"
+  )
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() - a.data.date.getTime()
+  );
+---
+
+<BaseLayout
+  title="Betraktelser | Joel von Gustafsson"
+  description="Vardagliga observationer om människan, samhället och sådant som först verkar obetydligt."
+>
+  <div class="category-layout">
+
+    <main class="category-main">
+
+      <!-- INTRO -->
+
+      <header class="category-header">
+
+        <span class="eyebrow">
+          Ämnesområde
+        </span>
+
+        <h1>Betraktelser</h1>
+
+        <p class="intro">
+          Vardagliga observationer om människan, samhället
+          och sådant som först verkar obetydligt.
+        </p>
+
+        <div class="introduction">
+
+          <p>
+            Alla frågor börjar inte med en nyhetsartikel,
+            en forskningsrapport eller en historisk händelse.
+          </p>
+
+          <p>
+            Ibland börjar de i en matbutik.
+            I en kö.
+            På en parkeringsplats.
+            Eller med ett uttryck som människor använder
+            utan att riktigt fundera på vad de säger.
+          </p>
+
+          <p>
+            De flesta låter sådana saker passera.
+          </p>
+
+          <p class="statement">
+            <strong>Jag har svårt för det.</strong>
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <!-- METOD -->
+
+      <section class="observation-box">
+
+        <div class="observation-heading">
+
+          <div>
+            <span class="small-heading">
+              Observation
+            </span>
+
+            <h2>Det lilla problemet</h2>
+          </div>
+
+          <span class="observation-number">
+            JvG:B01
+          </span>
+
+        </div>
+
+        <div class="observation-content">
+
+          <p>
+            Det finns saker i vardagen som fungerar så bra
+            att vi slutat fråga varför de fungerar.
+          </p>
+
+          <p>
+            Köer.
+            Kundvagnar.
+            Artighetsfraser.
+            Dörrar.
+            Fickor.
+            Kvitton.
+            Pilar på golvet.
+          </p>
+
+          <p>
+            Var för sig är de obetydliga.
+          </p>
+
+          <p>
+            <strong>
+              Men någon har bestämt att de ska fungera så.
+            </strong>
+          </p>
+
+          <p>
+            Det är oftast där jag börjar.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- JOELS METOD -->
+
+      <section class="method-section">
+
+        <span class="small-heading">
+          Arbetsmetod
+        </span>
+
+        <h2>Så gör jag en betraktelse</h2>
+
+        <ol class="method-list">
+
+          <li>
+            <span class="number">01</span>
+
+            <div>
+              <strong>Lägg märke till något.</strong>
+
+              <p>
+                Helst något som ingen annan verkar reagera på.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">02</span>
+
+            <div>
+              <strong>Fråga varför.</strong>
+
+              <p>
+                Om svaret verkar självklart, fråga igen.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">03</span>
+
+            <div>
+              <strong>Observera människor.</strong>
+
+              <p>
+                Utan att göra dem obekväma om det går att undvika.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">04</span>
+
+            <div>
+              <strong>Anteckna mönstret.</strong>
+
+              <p>
+                Tre observationer är fler än två.
+                Där börjar det bli intressant.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">05</span>
+
+            <div>
+              <strong>Försök hitta undantaget.</strong>
+
+              <p>
+                Om undantaget bekräftar regeln är saken enkel.
+                Om det motsäger regeln krävs mer eftertanke.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="number">06</span>
+
+            <div>
+              <strong>Dra inga förhastade slutsatser.</strong>
+
+              <p>
+                Vänta åtminstone tills du kommit hem.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+      </section>
+
+
+      <!-- ANTECKNINGSBOKEN -->
+
+      <section class="notebook">
+
+        <div class="notebook-header">
+
+          <span class="small-heading">
+            Ur anteckningsboken
+          </span>
+
+          <span class="notebook-date">
+            Pågående
+          </span>
+
+        </div>
+
+        <div class="notes">
+
+          <div class="note">
+            <span class="note-mark">—</span>
+
+            <p>
+              Varför går den andra kön nästan alltid snabbare?
+            </p>
+          </div>
+
+          <div class="note">
+            <span class="note-mark">—</span>
+
+            <p>
+              Om någon säger ”ingen fara” –
+              vilken fara syftar personen på?
+            </p>
+          </div>
+
+          <div class="note">
+            <span class="note-mark">—</span>
+
+            <p>
+              Den lilla fickan på jeans finns fortfarande.
+              Fickuret gör det nästan inte.
+            </p>
+          </div>
+
+          <div class="note">
+            <span class="note-mark">—</span>
+
+            <p>
+              IKEA har pilar på golvet trots att människor
+              redan vet hur man går.
+            </p>
+          </div>
+
+          <div class="note crossed-out">
+            <span class="note-mark">—</span>
+
+            <p>
+              En kundvagn är inte en farkost.
+            </p>
+          </div>
+
+        </div>
+
+        <p class="notebook-footer">
+          Den sista anteckningen hör egentligen inte hemma här.
+        </p>
+
+      </section>
+
+
+      <!-- FARKOSTPRINCIPEN -->
+
+      <aside class="farkost-note">
+
+        <span class="small-heading">
+          Redaktionell anmärkning
+        </span>
+
+        <p>
+          Jag får fortfarande enstaka frågor om
+          <em>Farkostprincipen</em>.
+        </p>
+
+        <p>
+          Min tidigare text i ämnet står fast.
+          Jag betraktar frågan som avslutad.
+        </p>
+
+        <p class="farkost-small">
+          Jag har därför ingen anledning att återkomma till den här.
+        </p>
+
+      </aside>
+
+
+      <!-- ARTIKLAR -->
+
+      {
+        posts.length > 0 ? (
+          <section class="articles">
+
+            <div class="section-heading">
+
+              <span>
+                Senaste betraktelser
+              </span>
+
+              <span class="count">
+                {posts.length} {posts.length === 1 ? "text" : "texter"}
+              </span>
+
+            </div>
+
+            <div class="article-grid">
+
+              {
+                posts.map((post) => (
+                  <ArticleCard post={post} />
+                ))
+              }
+
+            </div>
+
+          </section>
+        ) : (
+          <section class="empty">
+
+            <p>
+              Inga betraktelser har publicerats ännu.
+            </p>
+
+            <p>
+              Det betyder inte att ingenting har observerats.
+            </p>
+
+          </section>
+        )
+      }
+
+
+      <!-- FOOTER -->
+
+      <footer class="reflection-footer">
+
+        <span class="small-heading">
+          Om betraktelserna
+        </span>
+
+        <p>
+          Jag gör inte anspråk på att ha svar på allt.
+        </p>
+
+        <p>
+          I många fall har jag inte ens en teori när jag börjar.
+        </p>
+
+        <p class="footer-statement">
+          Men man måste börja med att lägga märke till saken.
+        </p>
+
+      </footer>
+
+    </main>
+
+    <Sidebar />
+
+  </div>
+</BaseLayout>
+
+
+<style>
+  .category-layout {
+    width: min(
+      var(--content-width),
+      calc(100% - 3rem)
+    );
+
+    margin: 3.5rem auto 5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 4rem;
+
+    align-items: start;
+  }
+
+
+  /* =========================
+     GEMENSAMT
+     ========================= */
+
+  .eyebrow,
+  .small-heading {
+    display: block;
+
+    margin-bottom: 0.6rem;
+
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: bold;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+  }
+
+
+  /* =========================
+     INTRO
+     ========================= */
+
+  .category-header {
+    max-width: 760px;
+
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-header h1 {
+    margin: 0;
+
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: normal;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+  }
+
+  .intro {
+    max-width: 700px;
+
+    margin: 1.4rem 0 0;
+
+    font-size: 1.3rem;
+    font-style: italic;
+
+    line-height: 1.55;
+  }
+
+  .introduction {
+    max-width: 680px;
+
+    margin-top: 2rem;
+
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .introduction p {
+    margin: 0.8rem 0;
+  }
+
+  .statement {
+    margin-top: 1.5rem !important;
+
+    padding-left: 1.25rem;
+
+    border-left: 3px solid var(--accent);
+
+    color: var(--text);
+
+    font-size: 1.15rem;
+  }
+
+
+  /* =========================
+     DET LILLA PROBLEMET
+     ========================= */
+
+  .observation-box {
+    margin-bottom: 4rem;
+
+    border-top: 4px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(104, 27, 22, 0.035);
+  }
+
+  .observation-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 1.5rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .observation-heading h2 {
+    margin: 0;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+
+    line-height: 1.15;
+  }
+
+  .observation-number {
+    color: var(--text-muted);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.1em;
+  }
+
+  .observation-content {
+    max-width: 680px;
+
+    padding: 1.35rem 1.75rem;
+  }
+
+  .observation-content p {
+    margin: 0.7rem 0;
+
+    line-height: 1.65;
+  }
+
+
+  /* =========================
+     METOD
+     ========================= */
+
+  .method-section {
+    margin-bottom: 4rem;
+  }
+
+  .method-section > h2 {
+    margin: 0 0 1.5rem;
+
+    font-size: 2rem;
+    font-weight: normal;
+
+    line-height: 1.15;
+  }
+
+  .method-list {
+    margin: 0;
+    padding: 0;
+
+    border-top: 3px solid var(--accent);
+
+    list-style: none;
+  }
+
+  .method-list li {
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 1rem;
+
+    padding: 1.1rem 0;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-list .number {
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    letter-spacing: 0.08em;
+  }
+
+  .method-list strong {
+    font-size: 1.02rem;
+  }
+
+  .method-list p {
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     ANTECKNINGSBOK
+     ========================= */
+
+  .notebook {
+    position: relative;
+
+    margin-bottom: 3rem;
+    padding: 1.75rem 2rem 1.5rem;
+
+    border: 1px solid var(--border);
+
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 34px,
+        rgba(110, 98, 88, 0.09) 35px
+      ),
+      rgba(255, 252, 244, 0.45);
+  }
+
+  .notebook-header {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .notebook-date {
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .notes {
+    max-width: 650px;
+  }
+
+  .note {
+    display: grid;
+
+    grid-template-columns: 20px 1fr;
+
+    gap: 0.5rem;
+  }
+
+  .note p {
+    margin: 0.65rem 0;
+
+    font-size: 1rem;
+    font-style: italic;
+
+    line-height: 1.55;
+  }
+
+  .note-mark {
+    padding-top: 0.65rem;
+
+    color: var(--accent);
+  }
+
+  .crossed-out p {
+    color: var(--text-muted);
+
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+
+  .notebook-footer {
+    margin: 1.4rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+
+  /* =========================
+     FARKOSTPRINCIPEN
+     ========================= */
+
+  .farkost-note {
+    max-width: 650px;
+
+    margin: 0 0 4rem auto;
+    padding: 1.25rem 1.5rem;
+
+    border-left: 3px solid var(--border);
+
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+  }
+
+  .farkost-note p {
+    margin: 0.55rem 0;
+
+    line-height: 1.55;
+  }
+
+  .farkost-note .small-heading {
+    color: var(--text-muted);
+  }
+
+  .farkost-small {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+
+  /* =========================
+     ARTIKLAR
+     ========================= */
+
+  .articles {
+    margin-top: 2rem;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+    padding: 0.7rem 0;
+
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-heading > span:first-child {
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+  }
+
+  .count {
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .article-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 3rem 2rem;
+  }
+
+
+  /* =========================
+     TOM KATEGORI
+     ========================= */
+
+  .empty {
+    margin-top: 2rem;
+    padding: 2rem 0 4rem;
+
+    border-top: 3px solid var(--accent);
+
+    color: var(--text-muted);
+
+    font-style: italic;
+  }
+
+  .empty p {
+    margin: 0.3rem 0;
+  }
+
+
+  /* =========================
+     FOOTER
+     ========================= */
+
+  .reflection-footer {
+    max-width: 680px;
+
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text-muted);
+
+    line-height: 1.6;
+  }
+
+  .reflection-footer p {
+    margin: 0.5rem 0;
+  }
+
+  .footer-statement {
+    color: var(--text);
+
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+
+  /* =========================
+     RESPONSIVE
+     ========================= */
+
+  @media (max-width: 900px) {
+    .category-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .category-layout {
+      width: min(
+        var(--content-width),
+        calc(100% - 2rem)
+      );
+
+      margin-top: 2rem;
+    }
+
+    .category-header h1 {
+      font-size: 3.5rem;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+    }
+
+    .observation-heading,
+    .observation-content {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .method-list li {
+      grid-template-columns: 38px 1fr;
+    }
+
+    .notebook {
+      padding: 1.4rem 1.25rem;
+    }
+
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

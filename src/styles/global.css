@@ -1,0 +1,47 @@
+:root {
+  --background: #f2eadc;
+  --surface: #f8f2e7;
+
+  --text: #211b17;
+  --text-muted: #6e6258;
+
+  --accent: #681b16;
+  --accent-dark: #3e100d;
+
+  --border: #cfc2ae;
+
+  --content-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}

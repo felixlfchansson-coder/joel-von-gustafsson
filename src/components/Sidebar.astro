@@ -1,0 +1,280 @@
+---
+const categories = [
+  "Samhälle",
+  "Media",
+  "Vetenskap",
+  "Kultur",
+  "Historia",
+  "Betraktelser",
+];
+---
+
+<aside class="sidebar">
+
+  <section class="sidebar-section about">
+    <h2>Om Joel von Gustafsson</h2>
+
+    <img
+      class="portrait"
+      src="/images/joel.png"
+      alt="Joel von Gustafsson vid sitt skrivbord"
+    />
+
+    <p class="name">Joel von Gustafsson</p>
+
+    <p class="bio">
+      Skribent, fritänkare och oberoende samhällsdebattör.
+    </p>
+
+    <p>
+      Här skriver jag om samhälle, media, vetenskap,
+      historia och sådant som förtjänar att granskas
+      närmare.
+    </p>
+
+    <a class="read-more" href="/om">
+      Läs mer om mig →
+    </a>
+  </section>
+
+
+  <section class="sidebar-section">
+    <h2>Kategorier</h2>
+
+    <nav class="categories" aria-label="Kategorier">
+      {
+        categories.map((category) => (
+          <a
+            href={`/kategori/${category.toLowerCase()}`}
+          >
+            {category}
+          </a>
+        ))
+      }
+    </nav>
+  </section>
+
+
+  <section class="sidebar-section popular">
+    <h2>Mest läst</h2>
+
+    <ol>
+      <li>
+        <a href="/blogg/farkostprincipen">
+          Farkostprincipen – när sunt förnuft får ge vika
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Vem bestämde egentligen att allt måste vara digitalt?
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Fem frågor media fortfarande inte har besvarat
+        </a>
+      </li>
+    </ol>
+  </section>
+
+
+  <section class="sidebar-section quote">
+    <blockquote>
+      "Jag säger inte att allt hänger ihop.
+      Jag säger bara att väldigt mycket verkar göra det."
+    </blockquote>
+
+    <span>— Joel von Gustafsson</span>
+  </section>
+
+</aside>
+
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sidebar-section {
+    padding-top: 1rem;
+
+    border-top: 3px solid var(--accent);
+  }
+
+  .sidebar-section h2 {
+    margin: 0 0 1rem;
+
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+
+  /* PORTRÄTT */
+
+  .portrait {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+    object-position: center 20%;
+
+    border: 1px solid var(--border);
+  }
+
+  .name {
+    margin: 1rem 0 0.2rem;
+
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+
+  .bio {
+    margin-top: 0.25rem;
+
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .about p {
+    line-height: 1.6;
+  }
+
+  .read-more {
+    display: inline-block;
+
+    margin-top: 0.5rem;
+
+    color: var(--accent);
+
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+
+  /* KATEGORIER */
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories a {
+    padding: 0.55rem 0;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+
+    font-size: 0.95rem;
+
+    text-decoration: none;
+  }
+
+  .categories a:hover {
+    color: var(--accent);
+  }
+
+
+  /* MEST LÄST */
+
+  .popular ol {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    counter-reset: popular;
+  }
+
+  .popular li {
+    counter-increment: popular;
+
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.5rem;
+
+    padding: 0.8rem 0;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .popular li::before {
+    content: counter(popular);
+
+    color: var(--accent);
+
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .popular a {
+    color: var(--text);
+
+    font-size: 0.9rem;
+    line-height: 1.35;
+
+    text-decoration: none;
+  }
+
+  .popular a:hover {
+    color: var(--accent);
+  }
+
+
+  /* JOEL-CITAT */
+
+  .quote {
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .quote blockquote {
+    margin: 0;
+
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .quote span {
+    display: block;
+
+    margin-top: 0.8rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+  }
+
+
+  @media (max-width: 900px) {
+    .sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .sidebar {
+      display: flex;
+    }
+  }
+</style>

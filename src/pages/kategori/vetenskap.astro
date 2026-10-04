@@ -1,0 +1,1029 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Sidebar from "../../components/Sidebar.astro";
+
+const posts = (await getCollection("blog"))
+  .filter(
+    (post) =>
+      !post.data.draft &&
+      post.data.category === "Vetenskap"
+  )
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() - a.data.date.getTime()
+  );
+---
+
+<BaseLayout
+  title="Vetenskap | Joel von Gustafsson"
+  description="Forskning, statistik och förstahandskällor. Samlade och granskade av Joel von Gustafsson."
+>
+  <div class="category-layout">
+
+    <main class="category-main">
+
+      <!-- INTRO -->
+
+      <header class="category-header">
+
+        <span class="eyebrow">
+          Ämnesområde
+        </span>
+
+        <h1>Vetenskap</h1>
+
+        <p class="intro">
+          Forskning, statistik och förstahandskällor.
+        </p>
+
+        <div class="introduction">
+
+          <p>
+            Jag har under många år samlat på mig
+            <strong>förstahandskällan till mina slutsatser</strong>
+            under denna rubrik.
+          </p>
+
+          <p>
+            En del information finns fortfarande i böcker,
+            men det mesta finns numera på
+            <strong>Goggel</strong>.
+          </p>
+
+          <p>
+            Vem behöver egentligen tio års universitetsutbildning
+            när samma information finns tillgänglig för vem som helst
+            med internetuppkoppling?
+          </p>
+
+          <p class="statement">
+            Skillnaden är kanske inte vem som får läsa forskningen.
+            <strong>Skillnaden är vem som vågar dra slutsatsen.</strong>
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <!-- JOELS VETENSKAPLIGA METOD -->
+
+      <section class="method-box">
+
+        <div class="method-heading">
+
+          <div>
+            <span class="small-heading">
+              Metodik
+            </span>
+
+            <h2>Joels vetenskapliga metod</h2>
+          </div>
+
+          <span class="method-number">
+            JvG:01
+          </span>
+
+        </div>
+
+
+        <ol class="method-list">
+
+          <li>
+            <span class="number">01</span>
+
+            <div>
+              <strong>Identifiera frågan</strong>
+
+              <p>
+                Börja med någonting som inte verkar stämma.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">02</span>
+
+            <div>
+              <strong>Goggel</strong>
+
+              <p>
+                Formulera frågan så tydligt som möjligt.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">03</span>
+
+            <div>
+              <strong>Läs minst tre rubriker</strong>
+
+              <p>
+                Flera oberoende resultat minskar risken för fel.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">04</span>
+
+            <div>
+              <strong>Jämför uppgifterna</strong>
+
+              <p>
+                Lägg särskilt märke till sådant som återkommer.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">05</span>
+
+            <div>
+              <strong>Använd sunt förnuft</strong>
+
+              <p>
+                Statistik behöver alltid sättas i ett mänskligt sammanhang.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">06</span>
+
+            <div>
+              <strong>Dra slutsatsen</strong>
+
+              <p>
+                Vänta inte på att någon annan ska göra det åt dig.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+
+        <div class="method-conclusion">
+
+          <p>
+            <strong>Om källorna säger olika saker:</strong>
+            mer forskning krävs.
+          </p>
+
+          <p>
+            <strong>Om källorna säger samma sak:</strong>
+            ett tydligt mönster har identifierats.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- KÄLLOR -->
+
+  <!-- JOELS KÄLLARKIV -->
+
+<section class="source-archive">
+
+  <div class="source-archive-heading">
+    <span class="small-heading">
+      Källarkiv
+    </span>
+
+    <h2>Utvalda förstahandskällor</h2>
+
+    <p>
+      Jag har här samlat några av de förstahandskällor
+      som ligger till grund för mina vetenskapliga slutsatser.
+    </p>
+
+    <p>
+      I vissa fall hänvisar källan vidare till en studie eller
+      forskningsrapport. Jag betraktar detta som samma källa,
+      eftersom informationen trots allt kommer därifrån från början.
+    </p>
+
+    <p class="source-note">
+      <strong>OBS:</strong>
+      Slutsatserna nedan är mina sammanfattningar av källorna.
+      Jag har förenklat vissa formuleringar eftersom vetenskapligt
+      språk ibland gör enkla saker onödigt komplicerade.
+    </p>
+  </div>
+
+
+  <div class="sources">
+
+    <!-- KÄLLA 1 -->
+
+    <article class="source">
+
+      <span class="source-number">
+        [1]
+      </span>
+
+      <div class="source-content">
+
+        <h3>
+          <a
+            href="https://www.unsw.edu.au/newsroom/news/2016/03/factcheck-does-eating-chocolate-improve-your-brain-function"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Does eating chocolate improve your brain function?
+          </a>
+        </h3>
+
+        <p class="source-origin">
+          UNSW Sydney
+        </p>
+
+        <div class="joel-conclusion">
+          <span>Joels slutsats</span>
+
+          <p>
+            Choklad förbättrar hjärnans funktion.
+          </p>
+        </div>
+
+        <p class="joel-comment">
+          Jag äter själv choklad och har inte märkt någon
+          försämring av min tankeförmåga.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- KÄLLA 2 -->
+
+    <article class="source">
+
+      <span class="source-number">
+        [2]
+      </span>
+
+      <div class="source-content">
+
+        <h3>
+          <a
+            href="https://news.ki.se/video-games-can-help-boost-childrens-intelligence"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Video games can help boost children's intelligence
+          </a>
+        </h3>
+
+        <p class="source-origin">
+          Karolinska Institutet
+        </p>
+
+        <div class="joel-conclusion">
+          <span>Joels slutsats</span>
+
+          <p>
+            Dataspel gör barn intelligentare.
+          </p>
+        </div>
+
+        <p class="joel-comment">
+          Notera att detta kommer från Karolinska Institutet.
+          Inte från mig.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- KÄLLA 3 -->
+
+    <article class="source">
+
+      <span class="source-number">
+        [3]
+      </span>
+
+      <div class="source-content">
+
+        <h3>
+          <a
+            href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2797596"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Association of Video Gaming With Cognitive
+            Performance Among Children
+          </a>
+        </h3>
+
+        <p class="source-origin">
+          JAMA Network Open
+        </p>
+
+        <div class="joel-conclusion">
+          <span>Joels slutsats</span>
+
+          <p>
+            Sambandet mellan dataspel och intelligens
+            har bekräftats oberoende.
+          </p>
+        </div>
+
+        <p class="joel-comment">
+          Ordet <em>association</em> betyder ungefär samband.
+          Jag ser därför ingen större anledning att fastna
+          i terminologin.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- KÄLLA 4 -->
+
+    <article class="source">
+
+      <span class="source-number">
+        [4]
+      </span>
+
+      <div class="source-content">
+
+        <h3>
+          <a
+            href="https://www.sciencealert.com/playing-video-games-has-an-unexpected-effect-on-kids-iq-study-says"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Playing Video Games Has an Unexpected
+            Effect on Kids' IQ
+          </a>
+        </h3>
+
+        <p class="source-origin">
+          ScienceAlert
+        </p>
+
+        <div class="joel-conclusion">
+          <span>Joels slutsats</span>
+
+          <p>
+            Dataspel påverkar barns IQ.
+            Effekten är dessutom oväntad.
+          </p>
+        </div>
+
+        <p class="joel-comment">
+          Vid det här laget har flera oberoende källor
+          tagit upp samma sak. Någonstans måste man också
+          våga acceptera ett resultat.
+        </p>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div class="source-reflection">
+
+    <span class="small-heading">
+      Kommentar
+    </span>
+
+    <p>
+      Jag försöker alltid gå direkt till forskningen.
+    </p>
+
+    <p>
+      I praktiken är forskningsrapporter ofta mycket långa,
+      skrivna på engelska och fulla av statistiska begrepp
+      som kräver ytterligare efterforskningar.
+    </p>
+
+    <p>
+      Därför börjar jag normalt med rubriken och sammanfattningen.
+      Om dessa är tydliga finns det sällan anledning att
+      komplicera saken.
+    </p>
+
+    <blockquote>
+      En källa blir inte bättre bara för att den är svårare att läsa.
+    </blockquote>
+
+  </div>
+
+
+  <p class="source-disclaimer">
+    Källorna kontrollerades vid publicering.
+    Jag ansvarar inte för eventuella ändringar eller förtydliganden
+    som gjorts efter att jag läste rubriken.
+  </p>
+
+</section>
+
+      <!-- ARTIKLAR -->
+
+      {
+        posts.length > 0 ? (
+          <section class="articles">
+
+            <div class="section-heading">
+
+              <span>
+                Vetenskapliga betraktelser
+              </span>
+
+              <span class="count">
+                {posts.length} {posts.length === 1 ? "text" : "texter"}
+              </span>
+
+            </div>
+
+
+            <div class="article-grid">
+
+              {
+                posts.map((post) => (
+                  <ArticleCard post={post} />
+                ))
+              }
+
+            </div>
+
+          </section>
+        ) : (
+          <section class="empty">
+
+            <p>
+              Inga vetenskapliga betraktelser har publicerats ännu.
+            </p>
+
+            <p>
+              Forskning pågår.
+            </p>
+
+          </section>
+        )
+      }
+
+
+      <!-- KÄLLPOLICY -->
+
+      <footer class="research-footer">
+
+        <span class="small-heading">
+          Källpolicy
+        </span>
+
+        <p>
+          Jag länkar där det är möjligt till mina källor.
+          Länkar kan förändras eller försvinna med tiden.
+        </p>
+
+        <p>
+          Jag ansvarar därför inte för om en källa senare
+          säger något annat än när jag läste rubriken.
+        </p>
+
+        <p class="revision">
+          Senast reviderad efter bästa förmåga.
+        </p>
+
+      </footer>
+
+    </main>
+
+
+    <Sidebar />
+
+  </div>
+</BaseLayout>
+
+
+<style>
+  .category-layout {
+    width: min(
+      var(--content-width),
+      calc(100% - 3rem)
+    );
+
+    margin: 3.5rem auto 5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 4rem;
+
+    align-items: start;
+  }
+
+
+  /* =========================
+     KATEGORIHUVUD
+     ========================= */
+
+  .category-header {
+    max-width: 760px;
+
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow,
+  .small-heading {
+    display: block;
+
+    margin-bottom: 0.6rem;
+
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: bold;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+  }
+
+  .category-header h1 {
+    margin: 0;
+
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: normal;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+  }
+
+  .intro {
+    margin: 1.4rem 0 0;
+
+    font-size: 1.35rem;
+    font-style: italic;
+
+    line-height: 1.5;
+  }
+
+  .introduction {
+    max-width: 680px;
+
+    margin-top: 2rem;
+
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .introduction p {
+    margin: 0.9rem 0;
+  }
+
+  .introduction strong {
+    color: var(--text);
+  }
+
+  .statement {
+    margin-top: 1.5rem !important;
+
+    padding-left: 1.25rem;
+
+    border-left: 3px solid var(--accent);
+  }
+
+
+  /* =========================
+     VETENSKAPLIG METOD
+     ========================= */
+
+  .method-box {
+    margin: 0 0 3.5rem;
+
+    border-top: 4px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(104, 27, 22, 0.035);
+  }
+
+  .method-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 1.5rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-heading h2 {
+    margin: 0;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+
+    line-height: 1.15;
+  }
+
+  .method-number {
+    color: var(--text-muted);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.7rem;
+
+    letter-spacing: 0.1em;
+  }
+
+
+  /* STEGEN */
+
+  .method-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .method-list li {
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 1rem;
+
+    padding: 1.1rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-list .number {
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    letter-spacing: 0.08em;
+  }
+
+  .method-list strong {
+    font-size: 1.05rem;
+  }
+
+  .method-list p {
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+
+  /* SLUTSATS I METODEN */
+
+  .method-conclusion {
+    padding: 1.25rem 1.75rem;
+
+    background: rgba(104, 27, 22, 0.06);
+  }
+
+  .method-conclusion p {
+    margin: 0.35rem 0;
+
+    font-size: 0.92rem;
+  }
+
+
+  /* =========================
+   KÄLLARKIV
+   ========================= */
+
+.source-archive {
+  margin: 4rem 0;
+}
+
+.source-archive-heading {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.source-archive-heading h2 {
+  margin: 0 0 1rem;
+
+  font-size: 2.2rem;
+  font-weight: normal;
+  line-height: 1.1;
+}
+
+.source-archive-heading p {
+  margin: 0.75rem 0;
+
+  color: var(--text-muted);
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.source-note {
+  margin-top: 1.5rem !important;
+
+  padding: 1rem 1.25rem;
+
+  border-left: 3px solid var(--accent);
+
+  background: rgba(104, 27, 22, 0.035);
+}
+
+.source-note strong {
+  color: var(--text);
+}
+
+
+/* KÄLLOR */
+
+.sources {
+  border-top: 4px solid var(--accent);
+}
+
+.source {
+  display: grid;
+
+  grid-template-columns: 50px minmax(0, 1fr);
+
+  gap: 1rem;
+
+  padding: 1.6rem 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.source-number {
+  padding-top: 0.15rem;
+
+  color: var(--accent);
+
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  letter-spacing: 0.08em;
+}
+
+.source-content h3 {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 1.2rem;
+  font-weight: normal;
+
+  line-height: 1.4;
+}
+
+.source-content h3 a {
+  color: var(--text);
+
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.source-content h3 a:hover {
+  color: var(--accent);
+}
+
+.source-origin {
+  margin: 0.35rem 0 1rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.72rem;
+  font-weight: bold;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+/* JOELS SLUTSATS */
+
+.joel-conclusion {
+  max-width: 600px;
+
+  margin: 1rem 0;
+
+  padding: 0.85rem 1rem;
+
+  border-left: 3px solid var(--accent);
+
+  background: rgba(104, 27, 22, 0.05);
+}
+
+.joel-conclusion span {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
+  color: var(--accent);
+
+  font-size: 0.65rem;
+  font-weight: bold;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+.joel-conclusion p {
+  margin: 0;
+
+  font-size: 1.05rem;
+  font-weight: bold;
+
+  line-height: 1.45;
+}
+
+.joel-comment {
+  max-width: 620px;
+
+  margin: 0.8rem 0 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+  font-style: italic;
+
+  line-height: 1.55;
+}
+
+
+/* REFLEKTION */
+
+.source-reflection {
+  max-width: 680px;
+
+  margin-top: 3rem;
+}
+
+.source-reflection p {
+  margin: 0.8rem 0;
+
+  line-height: 1.65;
+}
+
+.source-reflection blockquote {
+  margin: 1.75rem 0;
+
+  padding: 1rem 1.4rem;
+
+  border-left: 4px solid var(--accent);
+
+  background: rgba(104, 27, 22, 0.04);
+
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+
+/* DISCLAIMER */
+
+.source-disclaimer {
+  max-width: 650px;
+
+  margin-top: 2rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text-muted);
+
+  font-size: 0.78rem;
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+
+@media (max-width: 650px) {
+  .source {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+}
+
+
+  /* =========================
+     TOM KATEGORI
+     ========================= */
+
+  .empty {
+    margin-top: 2rem;
+    padding: 2rem 0 4rem;
+
+    border-top: 3px solid var(--accent);
+
+    color: var(--text-muted);
+
+    font-style: italic;
+  }
+
+  .empty p {
+    margin: 0.3rem 0;
+  }
+
+
+  /* =========================
+     KÄLLPOLICY
+     ========================= */
+
+  .research-footer {
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .research-footer p {
+    max-width: 650px;
+
+    margin: 0.45rem 0;
+  }
+
+  .revision {
+    margin-top: 1rem !important;
+
+    font-style: italic;
+  }
+
+
+  /* =========================
+     RESPONSIVE
+     ========================= */
+
+  @media (max-width: 900px) {
+    .category-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .category-layout {
+      width: min(
+        var(--content-width),
+        calc(100% - 2rem)
+      );
+
+      margin-top: 2rem;
+    }
+
+    .category-header h1 {
+      font-size: 3.5rem;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+    }
+
+    .method-heading {
+      padding: 1.25rem;
+    }
+
+    .method-list li {
+      grid-template-columns: 38px 1fr;
+
+      padding: 1rem 1.25rem;
+    }
+
+    .method-conclusion {
+      padding: 1.25rem;
+    }
+
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

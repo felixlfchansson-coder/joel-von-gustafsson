@@ -1,0 +1,864 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Sidebar from "../../components/Sidebar.astro";
+
+const posts = (await getCollection("blog"))
+  .filter(
+    (post) =>
+      !post.data.draft &&
+      post.data.category === "Historia"
+  )
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() - a.data.date.getTime()
+  );
+---
+
+<BaseLayout
+  title="Historia | Joel von Gustafsson"
+  description="Historiska händelser, årtal och detaljer som redan är dokumenterade – men inte alltid ordentligt genomtänkta."
+>
+  <div class="category-layout">
+
+    <main class="category-main">
+
+      <!-- INTRO -->
+
+      <header class="category-header">
+
+        <span class="eyebrow">
+          Ämnesområde
+        </span>
+
+        <h1>Historia</h1>
+
+        <p class="intro">
+          Händelser, personer och detaljer som redan är dokumenterade
+          – men inte alltid ordentligt genomtänkta.
+        </p>
+
+        <div class="introduction">
+
+          <p>
+            Historiker har ägnat hundratals år åt att studera historien.
+          </p>
+
+          <p>
+            Ändå finns det frågor som fortfarande verkar obesvarade.
+            Ibland för att svaret saknas.
+          </p>
+
+          <p class="statement">
+            <strong>
+              Ibland för att ingen verkar ha ställt den rätta frågan.
+            </strong>
+          </p>
+
+        </div>
+
+      </header>
+
+
+      <!-- JOELS HISTORISKA METOD -->
+
+      <section class="method-box">
+
+        <div class="method-heading">
+
+          <div>
+            <span class="small-heading">
+              Historisk metod
+            </span>
+
+            <h2>Så arbetar jag med historia</h2>
+          </div>
+
+          <span class="method-number">
+            JvG:H01
+          </span>
+
+        </div>
+
+
+        <div class="method-intro">
+
+          <p>
+            Jag är inte utbildad historiker.
+          </p>
+
+          <p>
+            Det kan i vissa sammanhang vara en fördel.
+          </p>
+
+          <p>
+            En utbildad historiker har lärt sig vilka frågor
+            som redan anses besvarade.
+          </p>
+
+          <p>
+            <strong>Jag har inte den begränsningen.</strong>
+          </p>
+
+        </div>
+
+
+        <ol class="principles">
+
+          <li>
+            <span class="number">01</span>
+
+            <div>
+              <strong>Ett årtal kan inte ha en åsikt.</strong>
+
+              <p>
+                Därför börjar jag gärna med årtalen.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">02</span>
+
+            <div>
+              <strong>
+                Två händelser som sker samma år sker samtidigt.
+              </strong>
+
+              <p>
+                Det låter självklart, men konsekvenserna diskuteras
+                förvånansvärt sällan.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">03</span>
+
+            <div>
+              <strong>
+                Om något förändras måste någonting ha orsakat förändringen.
+              </strong>
+
+              <p>
+                Historien består inte av slumpmässiga pilar
+                mellan årtal.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">04</span>
+
+            <div>
+              <strong>
+                Kartor ljuger inte.
+              </strong>
+
+              <p>
+                De kan däremot ritas av människor som gör det.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">05</span>
+
+            <div>
+              <strong>
+                En etablerad förklaring är fortfarande en förklaring.
+              </strong>
+
+              <p>
+                Att många historiker upprepar samma sak
+                gör den inte automatiskt mer genomtänkt.
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <span class="number">06</span>
+
+            <div>
+              <strong>
+                Ju mindre en detalj diskuteras,
+                desto större anledning finns att diskutera den.
+              </strong>
+
+              <p>
+                Frånvaro av frågor är inte samma sak
+                som frånvaro av frågetecken.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+      </section>
+
+
+      <!-- DETALJEN -->
+
+      <section class="detail-box">
+
+        <span class="small-heading">
+          En viktig princip
+        </span>
+
+        <h2>Det är ofta framför deras näsor</h2>
+
+        <p>
+          Jag har lagt märke till ett återkommande problem
+          när jag läser om historiska mysterier.
+        </p>
+
+        <p>
+          Ju större mysteriet blir, desto mer komplicerade
+          verkar förklaringarna bli.
+        </p>
+
+        <p>
+          Pyramider kräver teorier om avancerad ingenjörskonst.
+          Dinosaurier kräver rekonstruktioner.
+          Historiska tidslinjer kräver hela böcker.
+        </p>
+
+        <p>
+          Men ibland finns de viktigaste uppgifterna redan där:
+          ett årtal, ett fotografi, en karta, en sten eller ett ben.
+        </p>
+
+        <blockquote>
+          Det är framför deras näsor.
+        </blockquote>
+
+        <p>
+          Min metod är därför att börja med det uppenbara
+          och först därefter göra det komplicerat.
+        </p>
+
+      </section>
+
+
+      <!-- VAD JAG UNDERSÖKER -->
+
+      <section class="questions">
+
+        <div class="questions-heading">
+
+          <span class="small-heading">
+            Pågående undersökningar
+          </span>
+
+          <h2>Frågor jag arbetar med</h2>
+
+        </div>
+
+
+        <div class="question-list">
+
+          <article class="question">
+
+            <span class="question-number">
+              01
+            </span>
+
+            <div>
+              <h3>Hur mycket vet vi egentligen om dinosaurierna?</h3>
+
+              <p>
+                Vi har benen.
+                Resten har någon varit tvungen att lägga till.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="question">
+
+            <span class="question-number">
+              02
+            </span>
+
+            <div>
+              <h3>Hur byggdes pyramiderna?</h3>
+
+              <p>
+                Jag tror att problemet är enklare än
+                dokumentärerna vill få det att framstå.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="question">
+
+            <span class="question-number">
+              03
+            </span>
+
+            <div>
+              <h3>Var befinner sig Cleopatra egentligen på tidslinjen?</h3>
+
+              <p>
+                När man räknar på årtalen blir det betydligt
+                märkligare än skolböckerna ger intryck av.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- ARTIKLAR -->
+
+      {
+        posts.length > 0 ? (
+          <section class="articles">
+
+            <div class="section-heading">
+
+              <span>
+                Historiska undersökningar
+              </span>
+
+              <span class="count">
+                {posts.length} {posts.length === 1 ? "text" : "texter"}
+              </span>
+
+            </div>
+
+
+            <div class="article-grid">
+
+              {
+                posts.map((post) => (
+                  <ArticleCard post={post} />
+                ))
+              }
+
+            </div>
+
+          </section>
+        ) : (
+          <section class="empty">
+
+            <p>
+              Inga historiska undersökningar har publicerats ännu.
+            </p>
+
+            <p>
+              Historien finns dock kvar.
+            </p>
+
+          </section>
+        )
+      }
+
+
+      <!-- HISTORIESKRIVNING -->
+
+      <footer class="history-footer">
+
+        <span class="small-heading">
+          Om historieskrivningen
+        </span>
+
+        <p>
+          Jag försöker inte skriva om historien.
+        </p>
+
+        <p class="footer-statement">
+          Jag försöker läsa det finstilta.
+        </p>
+
+        <p>
+          Om det leder till andra slutsatser än de etablerade
+          är det inte årtalens fel.
+        </p>
+
+      </footer>
+
+    </main>
+
+
+    <Sidebar />
+
+  </div>
+</BaseLayout>
+
+
+<style>
+  .category-layout {
+    width: min(
+      var(--content-width),
+      calc(100% - 3rem)
+    );
+
+    margin: 3.5rem auto 5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 4rem;
+
+    align-items: start;
+  }
+
+
+  /* =========================
+     GEMENSAMMA RUBRIKER
+     ========================= */
+
+  .eyebrow,
+  .small-heading {
+    display: block;
+
+    margin-bottom: 0.6rem;
+
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: bold;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+  }
+
+
+  /* =========================
+     INTRO
+     ========================= */
+
+  .category-header {
+    max-width: 760px;
+
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-header h1 {
+    margin: 0;
+
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: normal;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+  }
+
+  .intro {
+    max-width: 700px;
+
+    margin: 1.4rem 0 0;
+
+    font-size: 1.3rem;
+    font-style: italic;
+
+    line-height: 1.55;
+  }
+
+  .introduction {
+    max-width: 680px;
+
+    margin-top: 2rem;
+
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .introduction p {
+    margin: 0.8rem 0;
+  }
+
+  .introduction strong {
+    color: var(--text);
+  }
+
+  .statement {
+    margin-top: 1.5rem !important;
+
+    padding-left: 1.25rem;
+
+    border-left: 3px solid var(--accent);
+  }
+
+
+  /* =========================
+     HISTORISK METOD
+     ========================= */
+
+  .method-box {
+    margin-bottom: 4rem;
+
+    border-top: 4px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(104, 27, 22, 0.035);
+  }
+
+  .method-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 1.5rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-heading h2 {
+    margin: 0;
+
+    font-size: 1.8rem;
+    font-weight: normal;
+
+    line-height: 1.15;
+  }
+
+  .method-number {
+    color: var(--text-muted);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.1em;
+  }
+
+  .method-intro {
+    padding: 1.25rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .method-intro p {
+    margin: 0.4rem 0;
+
+    line-height: 1.6;
+  }
+
+  .principles {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .principles li {
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 1rem;
+
+    padding: 1.1rem 1.75rem;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .principles li:last-child {
+    border-bottom: 0;
+  }
+
+  .principles .number {
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    letter-spacing: 0.08em;
+  }
+
+  .principles strong {
+    font-size: 1.02rem;
+  }
+
+  .principles p {
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     DET ÄR FRAMFÖR DERAS NÄSOR
+     ========================= */
+
+  .detail-box {
+    max-width: 680px;
+
+    margin-bottom: 4rem;
+  }
+
+  .detail-box h2 {
+    margin: 0 0 1.25rem;
+
+    font-size: 2.25rem;
+    font-weight: normal;
+
+    line-height: 1.1;
+  }
+
+  .detail-box p {
+    margin: 0.9rem 0;
+
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .detail-box blockquote {
+    margin: 2rem 0;
+
+    padding: 1.15rem 1.5rem;
+
+    border-left: 4px solid var(--accent);
+
+    background: rgba(104, 27, 22, 0.04);
+
+    font-size: 1.5rem;
+    font-style: italic;
+
+    line-height: 1.4;
+  }
+
+
+  /* =========================
+     PÅGÅENDE UNDERSÖKNINGAR
+     ========================= */
+
+  .questions {
+    margin-bottom: 4rem;
+  }
+
+  .questions-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .questions-heading h2 {
+    margin: 0;
+
+    font-size: 2rem;
+    font-weight: normal;
+
+    line-height: 1.15;
+  }
+
+  .question-list {
+    border-top: 3px solid var(--accent);
+  }
+
+  .question {
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 1rem;
+
+    padding: 1.4rem 0;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .question-number {
+    padding-top: 0.2rem;
+
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: bold;
+
+    letter-spacing: 0.08em;
+  }
+
+  .question h3 {
+    margin: 0;
+
+    font-size: 1.2rem;
+    font-weight: normal;
+
+    line-height: 1.35;
+  }
+
+  .question p {
+    max-width: 620px;
+
+    margin: 0.4rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.92rem;
+    font-style: italic;
+
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     ARTIKLAR
+     ========================= */
+
+  .articles {
+    margin-top: 2rem;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+    padding: 0.7rem 0;
+
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-heading > span:first-child {
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+  }
+
+  .count {
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .article-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 3rem 2rem;
+  }
+
+
+  /* =========================
+     TOM KATEGORI
+     ========================= */
+
+  .empty {
+    margin-top: 2rem;
+    padding: 2rem 0 4rem;
+
+    border-top: 3px solid var(--accent);
+
+    color: var(--text-muted);
+
+    font-style: italic;
+  }
+
+  .empty p {
+    margin: 0.3rem 0;
+  }
+
+
+  /* =========================
+     FOOTER
+     ========================= */
+
+  .history-footer {
+    max-width: 680px;
+
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text-muted);
+
+    line-height: 1.6;
+  }
+
+  .history-footer p {
+    margin: 0.5rem 0;
+  }
+
+  .footer-statement {
+    color: var(--text);
+
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+
+  /* =========================
+     RESPONSIVE
+     ========================= */
+
+  @media (max-width: 900px) {
+    .category-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .category-layout {
+      width: min(
+        var(--content-width),
+        calc(100% - 2rem)
+      );
+
+      margin-top: 2rem;
+    }
+
+    .category-header h1 {
+      font-size: 3.5rem;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+    }
+
+    .method-heading,
+    .method-intro {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .principles li {
+      grid-template-columns: 38px 1fr;
+
+      padding: 1rem 1.25rem;
+    }
+
+    .question {
+      grid-template-columns: 38px 1fr;
+    }
+
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

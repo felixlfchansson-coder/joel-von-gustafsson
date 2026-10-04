@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+
+import Header from "../components/Header.astro";
+import Navigation from "../components/Navigation.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Joel von Gustafsson",
+  description = "Oberoende betraktelser om samhälle, media och vår samtid."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+
+    <Header />
+
+    <Navigation />
+
+    <main>
+      <slot />
+    </main>
+
+  </body>
+</html>

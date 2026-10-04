@@ -1,0 +1,403 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  category: string;
+  author?: string;
+  image?: string;
+  imageAlt?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  date,
+  category,
+  author = "Joel von Gustafsson",
+  image,
+  imageAlt = "",
+  tags = [],
+} = Astro.props;
+
+const formattedDate = date.toLocaleDateString("sv-SE", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<BaseLayout
+  title={`${title} | Joel von Gustafsson`}
+  description={description}
+>
+  <div class="page-layout">
+
+    <article class="article">
+
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">{category}</span>
+          <span class="separator">|</span>
+          <time datetime={date.toISOString()}>
+            {formattedDate}
+          </time>
+        </div>
+
+        <h1>{title}</h1>
+
+        <p class="lead">
+          {description}
+        </p>
+
+        <div class="author">
+          Av {author}
+        </div>
+      </header>
+
+      {
+        image && (
+          <figure class="hero-image">
+            <img
+              src={image}
+              alt={imageAlt}
+            />
+
+            {imageAlt && (
+              <figcaption>
+                {imageAlt}
+              </figcaption>
+            )}
+          </figure>
+        )
+      }
+
+      <div class="article-content">
+        <slot />
+      </div>
+
+      {
+        tags.length > 0 && (
+          <footer class="article-footer">
+            <span class="tag-heading">ÄMNEN</span>
+
+            <div class="tags">
+              {
+                tags.map((tag) => (
+                  <span class="tag">
+                    {tag}
+                  </span>
+                ))
+              }
+            </div>
+          </footer>
+        )
+      }
+
+      <div class="signature">
+        <p class="signature-name">
+          Joel von Gustafsson
+        </p>
+
+        <p>
+          Oberoende betraktelser om samhälle, media och vår samtid.
+        </p>
+      </div>
+
+    </article>
+
+    <Sidebar />
+
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout {
+    width: min(var(--content-width), calc(100% - 3rem));
+    margin: 3.5rem auto 5rem;
+
+    display: grid;
+    grid-template-columns: minmax(0, 760px) 300px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .article {
+    min-width: 0;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    margin-bottom: 1rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .category {
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  .separator {
+    color: var(--border);
+  }
+
+  h1 {
+    margin: 0;
+
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: normal;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .lead {
+    max-width: 680px;
+
+    margin: 1.5rem 0 1rem;
+
+    color: var(--text-muted);
+
+    font-size: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .author {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  .hero-image {
+    margin: 2.5rem 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+
+    border: 1px solid var(--border);
+  }
+
+  .hero-image figcaption {
+    margin-top: 0.5rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  /*
+    :global behövs eftersom innehållet i <slot />
+    kommer från Markdown och därför inte skapas direkt
+    av den här Astro-komponenten.
+  */
+
+ .article-content {
+  max-width: 680px;
+}
+
+.article-content :global(p) {
+  margin: 1.05rem 0;
+
+  font-size: 1.18rem;
+  line-height: 1.72;
+  letter-spacing: 0.005em;
+}
+
+.article-content :global(h2) {
+  margin: 3.75rem 0 1.35rem;
+  padding-bottom: 0.65rem;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-size: 2.15rem;
+  font-weight: normal;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.article-content :global(h2)::before {
+  content: "";
+
+  display: block;
+
+  width: 42px;
+  height: 3px;
+
+  margin-bottom: 1rem;
+
+  background: var(--accent);
+}
+
+.article-content :global(h3) {
+  margin: 2.75rem 0 1rem;
+
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+.article-content :global(strong) {
+  color: #17110e;
+  font-weight: 700;
+}
+
+/* CITAT */
+
+.article-content :global(blockquote) {
+  margin: 2.5rem 0;
+  padding: 1.25rem 1.5rem;
+
+  border-left: 4px solid var(--accent);
+
+  background: rgba(104, 27, 22, 0.04);
+  color: #51463d;
+
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.article-content :global(blockquote p) {
+  margin: 0;
+}
+
+/* LISTOR */
+
+.article-content :global(ul),
+.article-content :global(ol) {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem 1.25rem 2.75rem;
+
+  border-left: 3px solid var(--accent);
+
+  background: rgba(104, 27, 22, 0.035);
+}
+
+.article-content :global(li) {
+  margin: 0.55rem 0;
+
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+/* LÄNKAR */
+
+.article-content :global(a) {
+  color: var(--accent);
+
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* AVDELARE */
+
+.article-content :global(hr) {
+  margin: 3rem 0;
+
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+  .article-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid var(--border);
+  }
+
+  .tag-heading {
+    display: block;
+
+    margin-bottom: 0.8rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.3rem 0.65rem;
+
+    border: 1px solid var(--border);
+
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.2);
+
+    font-size: 0.8rem;
+  }
+
+  .signature {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .signature p {
+    margin: 0.2rem 0;
+  }
+
+  .signature-name {
+    color: var(--text);
+
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 900px) {
+    .page-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .page-layout {
+      width: min(100% - 2rem, var(--content-width));
+      margin-top: 2rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .article-content :global(p) {
+      font-size: 1.05rem;
+    }
+  }
+</style>

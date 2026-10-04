@@ -1,0 +1,80 @@
+<nav class="navigation" aria-label="Huvudnavigation">
+  <div class="navigation-inner">
+
+    <a href="/">Hem</a>
+    <a href="/kategori/samhalle">Samhälle</a>
+    <a href="/kategori/media">Media</a>
+    <a href="/kategori/vetenskap">Vetenskap</a>
+    <a href="/kategori/historia">Historia</a>
+    <a href="/kategori/betraktelser">Betraktelser</a>
+    <a href="/om">Om mig</a>
+
+  </div>
+</nav>
+
+<style>
+  .navigation {
+    background: var(--accent);
+    border-bottom: 3px solid var(--accent-dark);
+    color: #f7eee4;
+  }
+
+  .navigation-inner {
+    width: min(var(--content-width), 100%);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    overflow-x: auto;
+  }
+
+ a {
+  position: relative;
+
+  padding: 1rem 1.25rem;
+
+  color: rgba(255, 245, 235, 0.88);
+
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+
+a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 0.55rem;
+
+  height: 1px;
+
+  background: #f5eee3;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 150ms ease;
+}
+
+a:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+</style>

@@ -1,0 +1,171 @@
+<header class="site-header">
+  <div class="header-overlay"></div>
+
+  <div class="header-content">
+    <div class="identity">
+      <a class="site-title" href="/">
+        Joel von Gustafsson
+      </a>
+
+      <p class="tagline">
+        Oberoende betraktelser om samhälle, kultur och vår samtid.
+      </p>
+    </div>
+
+    <blockquote class="header-quote">
+      <p>
+        "Allt hänger ihop,<br />
+        det gäller bara att se mönstret."
+      </p>
+
+      <cite>— Joel von Gustafsson</cite>
+    </blockquote>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 190px;
+
+    color: #f5eee3;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(31, 22, 17, 0.94) 0%,
+        rgba(31, 22, 17, 0.91) 50%,
+        rgba(31, 22, 17, 0.76) 100%
+      ),
+      url("/images/joel.gustafsson.png");
+
+    background-size: cover;
+
+    /* Flytta detta värde tills Joel hamnar snyggt */
+    background-position: center 35%;
+  }
+
+  /*
+    Ger lite gammal tidnings-/papperskänsla
+    utan att bli en uppenbar effekt.
+  */
+  .site-header::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        rgba(255, 255, 255, 0.025),
+        rgba(0, 0, 0, 0.04)
+      );
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+
+    width: min(var(--content-width), calc(100% - 3rem));
+    min-height: 190px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 4rem;
+  }
+
+  .identity {
+    min-width: 0;
+  }
+
+  .site-title {
+    display: block;
+
+    color: #f7f0e5;
+
+    font-size: clamp(3rem, 5vw, 4.7rem);
+    font-weight: normal;
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+
+    color: rgba(247, 240, 229, 0.78);
+
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .header-quote {
+    flex: 0 0 280px;
+
+    margin: 0;
+    padding-left: 1.5rem;
+
+    border-left: 1px solid rgba(247, 240, 229, 0.22);
+
+    color: rgba(247, 240, 229, 0.78);
+
+    text-align: right;
+    font-style: italic;
+  }
+
+  .header-quote p {
+    margin: 0 0 0.6rem;
+
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .header-quote cite {
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 800px) {
+    .site-header,
+    .header-content {
+      min-height: 160px;
+    }
+
+    .header-quote {
+      display: none;
+    }
+
+    .site-title {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .header-content {
+      width: min(var(--content-width), calc(100% - 2rem));
+    }
+
+    .site-title {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+    }
+  }
+</style>
